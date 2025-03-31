@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "chmod +x node_modules/.bin/next && next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install && npm run build"
+    "vercel-build": "npm install && chmod +x node_modules/.bin/next && npm run build"
   },
   "keywords": [
     "vit",
