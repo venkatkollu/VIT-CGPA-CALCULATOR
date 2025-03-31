@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import GoogleAd from "./GoogleAd";
 
 const gradePoints = { S: 10, A: 9, B: 8, C: 7, D: 6, E: 5, F: 0 };
 
@@ -68,13 +69,13 @@ const VITCGPACalculator = () => {
   };
 
   return (
-    <div className="p-6 space-y-6 max-w-md mx-auto bg-white shadow-lg rounded-lg">
+    <div className="p-6 space-y-4 max-w-md mx-auto bg-white shadow-lg rounded-lg">
       <h1 className="text-2xl font-bold text-center">VIT CGPA CALCULATOR</h1>
       
       {/* GPA Calculation Section */}
       <h2 className="text-lg font-semibold">GPA Calculation</h2>
       {courses.map((course, index) => (
-        <div key={index} className="flex space-x-4 items-center mb-4">
+        <div key={index} className="flex space-x-4 items-center mb-2">
           <select 
             className="w-28 border p-2 rounded-lg"
             value={course.credits}
@@ -108,22 +109,22 @@ const VITCGPACalculator = () => {
       ))}
 
       {/* Buttons for GPA Calculation */}
-      <div className="flex space-x-4 justify-center mt-4">
+      <div className="flex space-x-4 justify-center">
         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg" onClick={handleAddCourse}>Add Course</button>
         <button className="bg-green-500 text-white px-4 py-2 rounded-lg" onClick={handleCalculateGPA}>Calculate GPA</button>
       </div>
       
       {/* Display Calculated GPA */}
       {gpa && (
-        <div className="text-center mt-6">
+        <div className="text-center">
           <p className="text-xl font-bold">Your GPA: {gpa}</p>
-          <p className="text-sm text-gray-700 mt-2">{suggestion}</p>
+          <p className="text-sm text-gray-700 mt-1">{suggestion}</p>
         </div>
       )}
 
       {/* CGPA Calculation Section */}
-      <h2 className="text-lg font-semibold mt-6">CGPA Calculation</h2>
-      <div className="space-y-4">
+      <h2 className="text-lg font-semibold mt-3">CGPA Calculation</h2>
+      <div className="space-y-2">
         <input type="number" className="w-full border p-2 rounded-lg" placeholder="Total Completed Credits" onChange={(e) => setPrevCredits(e.target.value)} />
         <input type="number" className="w-full border p-2 rounded-lg" placeholder="Previous CGPA" onChange={(e) => setPrevCGPA(e.target.value)} />
         <input type="number" className="w-full border p-2 rounded-lg" placeholder="Current Semester Credits" onChange={(e) => setCurrentCredits(e.target.value)} />
@@ -133,10 +134,15 @@ const VITCGPACalculator = () => {
       
       {/* Display Calculated CGPA */}
       {cgpa && (
-        <div className="text-center mt-6">
+        <div className="text-center mt-2">
           <p className="text-xl font-bold">Your CGPA: {cgpa}</p>
         </div>
       )}
+
+      {/* Bottom Ad - Only keeping one ad at the bottom */}
+      <div className="mt-4">
+        <GoogleAd slot="1122334455" format="auto" responsive={true} />
+      </div>
     </div>
   );
 };
